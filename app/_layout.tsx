@@ -1,24 +1,14 @@
-import { Link, Slot } from "expo-router";
-import { View, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Slot, Stack } from 'expo-router';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-export default function() {
-    return <SafeAreaView>
-        <View style={{height: "90%"}}>
-            <Slot />
-        </View>
-        <View style={{backgroundColor: "red"}}>
-            <Link href={"/"}>
-                <Text>Take me to for you page</Text>
-            </Link>
-
-            <Link href={"/explore"}>
-                    <Text>Take me to explore page</Text>
-            </Link>
-
-            <Link href={"/account"}>
-                    <Text>Take me to account page</Text>
-            </Link>
-        </View>
-    </SafeAreaView>
+export default function Layout() {
+  return (
+    <GestureHandlerRootView>
+      <Stack screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name="accountinfo" options={{ headerShown: true, headerTitle: "Account info", headerBackTitle: "Go Back" }} />
+      </Stack>
+    </GestureHandlerRootView>
+  );
 }
